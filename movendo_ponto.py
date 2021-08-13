@@ -26,11 +26,17 @@ def funControle(move,campo):
 def funUp(move,linha,coluna,campo):
     campo[linha-1][coluna] = 'X'
 def funDown(move,linha,coluna,campo):
-    campo[linha+1][coluna] = 'X'
+    if linha == 4:
+        campo[0][coluna] = 'X'
+    else:
+        campo[linha+1][coluna] = 'X'
 def funLeft(move,linha,coluna,campo):
     campo[linha][coluna-1] = 'X'
 def funRight(move,linha,coluna,campo):
-    campo[linha][coluna+1] = 'X'
+    if coluna == 4: 
+        campo[linha][0] = 'X'
+    else:
+        campo[linha][coluna+1] = 'X'
 
 linha = random.randint(0,4)
 coluna = random.randint(0,4)
@@ -55,6 +61,3 @@ while(not laco):
         break
     
     funControle(move,campo)
-    
-
-
