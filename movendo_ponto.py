@@ -1,5 +1,13 @@
 import random
 
+def arenaJogo(aux,campo):
+    for i in range(aux):
+        for j in range(aux):
+            print(campo[i][j], end='')
+            if j != aux-1:
+                print(' - ',end='')
+        print()
+
 def funControle(move,campo):
     linha = 0
     coluna = 0
@@ -41,15 +49,42 @@ def funRight(move,linha,coluna,campo):
 linha = random.randint(0,4)
 coluna = random.randint(0,4)
 
+linhaDaBola = random.randint(0,4)
+colunaDaBola = random.randint(0,4) 
+
 campo = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']] 
 campo[linha][coluna] = 'X'
+campo[linhaDaBola][colunaDaBola] = 'O'
 
 aux = 5
 
 laco = None
-while(not laco):
+while True:
+    #arenaJogo(aux,campo)
+    temBolinha = False
     for i in range(aux):
         for j in range(aux):
+            if campo[i][j] == 'O':
+                temBolinha = True
+    if temBolinha == False:
+        linhaDaBola = random.randint(0,4)
+        colunaDaBola = random.randint(0,4)   
+        campo[linhaDaBola][colunaDaBola] = 'O'
+    """
+    for i in range(aux):
+        for i in range(aux):
+            if(campo[linha][coluna] != 'O'):
+                while True:
+                    linhaDaBola = random.randint(0,4)
+                    colunaDaBola = random.randint(0,4)
+                    
+                    if linha != linhaDaBola or coluna != colunaDaBola:
+                        campo[linhaDaBola][colunaDaBola] = 'O'   
+                        break
+      """  
+    for i in range(aux):
+        for j in range(aux):
+                
             print(campo[i][j], end='')
             if j != aux-1:
                 print(' - ',end='')
@@ -59,5 +94,8 @@ while(not laco):
     
     if move == '0':
         break
-    
-    funControle(move,campo)
+    elif move == 'W' or move == 'A' or move == 'S' or move == 'D':
+        funControle(move,campo)
+        
+    else:
+        print('\nAre u kidding me? Type correctly please!\n')
