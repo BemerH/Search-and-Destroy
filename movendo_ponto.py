@@ -4,14 +4,16 @@ def funControle(move,campo):
     linha = 0
     coluna = 0
     
-    for i in range(3):
-        for j in range(3):
+    aux = 5
+    
+    for i in range(aux):
+        for j in range(aux):
             if campo[i][j] == 'X':
                 linha = i
                 coluna = j
                 
     campo[linha][coluna] = ''
-    
+
     if move == 'W':
         funUp(move,linha,coluna,campo)
     elif move == 'S':
@@ -30,18 +32,20 @@ def funLeft(move,linha,coluna,campo):
 def funRight(move,linha,coluna,campo):
     campo[linha][coluna+1] = 'X'
 
-linha = random.randint(0,2)
-coluna = random.randint(0,2)
+linha = random.randint(0,4)
+coluna = random.randint(0,4)
 
-campo = [['','',''],['','',''],['','','']] 
+campo = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']] 
 campo[linha][coluna] = 'X'
+
+aux = 5
 
 laco = None
 while(not laco):
-    for i in range(3):
-        for j in range(3):
+    for i in range(aux):
+        for j in range(aux):
             print(campo[i][j], end='')
-            if j != 2:
+            if j != aux-1:
                 print(' - ',end='')
         print()
     
